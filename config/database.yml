@@ -1,0 +1,22 @@
+# SQLite. Versions 3.8.0 and up are supported.
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem "sqlite3"
+#
+default: &default
+  adapter: oracle_enhanced
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: oracle.cise.ufl.edu
+  database: orcl
+  username: perez.jesus
+  password: OUBJz3dqrcHkHCK432n919Zc
+  port: 1521
+
+development:
+  adapter: oracle_enhanced
+  username: perez.jesus
+  password: OUBJz3dqrcHkHCK432n919Zc
+  database: oracle.cise.ufl.edu/orcl
+
+
