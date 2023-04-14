@@ -1,0 +1,2 @@
+json.extract! book, :id, :isbn, :text_reviews_count, :series, :country_code, :language_code, :asin, :is_ebook, :average_rating, :kindle_asin, :description, :format, :link, :publisher, :num_pages, :publication_day, :isbn13, :publication_month, :publication_year, :url, :image_url, :ratings_count, :work_id, :title, :title_without_series, :created_at, :updated_at
+json.url book_url(book, format: :json)

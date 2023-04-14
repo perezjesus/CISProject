@@ -1,0 +1,53 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isbn: MyString
+  text_reviews_count: 1
+  series: MyString
+  country_code: MyString
+  language_code: MyString
+  asin: MyString
+  is_ebook: MyString
+  average_rating: 9.99
+  kindle_asin: MyString
+  description: MyString
+  format: MyString
+  link: MyString
+  publisher: MyString
+  num_pages: 1
+  publication_day: 1
+  isbn13: MyString
+  publication_month: 1
+  publication_year: 1
+  url: MyString
+  image_url: MyString
+  ratings_count: 1
+  work: one
+  title: MyString
+  title_without_series: MyString
+
+two:
+  isbn: MyString
+  text_reviews_count: 1
+  series: MyString
+  country_code: MyString
+  language_code: MyString
+  asin: MyString
+  is_ebook: MyString
+  average_rating: 9.99
+  kindle_asin: MyString
+  description: MyString
+  format: MyString
+  link: MyString
+  publisher: MyString
+  num_pages: 1
+  publication_day: 1
+  isbn13: MyString
+  publication_month: 1
+  publication_year: 1
+  url: MyString
+  image_url: MyString
+  ratings_count: 1
+  work: two
+  title: MyString
+  title_without_series: MyString

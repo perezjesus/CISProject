@@ -17,6 +17,6 @@ development:
   adapter: oracle_enhanced
   username: perez.jesus
   password: OUBJz3dqrcHkHCK432n919Zc
-  database: oracle.cise.ufl.edu/orcl
+  database: oracle.cise.ufl.edu:1521/orcl
 
 
