@@ -11,10 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_12_234157) do
-  create_table "auth_j", id: false, force: :cascade do |t|
-    t.text "author_data"
-  end
-
   create_table "authors", primary_key: "author_id", id: :string, force: :cascade do |t|
     t.decimal "average_rating", precision: 3, scale: 2
     t.integer "text_reviews_count", precision: 38
@@ -54,22 +50,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_12_234157) do
   end
 
   create_table "genres", id: false, force: :cascade do |t|
-    t.string "book_id", limit: 4000
-    t.string "fiction", limit: 4000
-    t.string "history", limit: 4000
-    t.string "fantasy", limit: 4000
-    t.string "mystery", limit: 4000
-    t.string "poetry", limit: 4000
-    t.string "romance", limit: 4000
-    t.string "nonfiction", limit: 4000
-    t.string "comics", limit: 4000
-    t.string "biography", limit: 4000
-    t.string "youngadult", limit: 4000
-    t.string "children", limit: 4000
-  end
-
-  create_table "genres_json", id: false, force: :cascade do |t|
-    t.text "genre_data"
+    t.string "book_id"
+    t.string "fiction", limit: 10
+    t.string "history", limit: 10
+    t.string "fantasy", limit: 10
+    t.string "mystery", limit: 10
+    t.string "poetry", limit: 10
+    t.string "romance", limit: 10
+    t.string "nonfiction", limit: 10
+    t.string "comics", limit: 10
+    t.string "biography", limit: 10
+    t.string "youngadult", limit: 10
+    t.string "children", limit: 10
   end
 
   create_table "writes", id: false, force: :cascade do |t|
@@ -78,4 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_12_234157) do
     t.string "role"
   end
 
+  add_foreign_key "genres", "books", primary_key: "book_id", name: "fkey_book_id"
+  add_foreign_key "writes", "authors", primary_key: "author_id", name: "fk_author_id"
+  add_foreign_key "writes", "books", primary_key: "book_id", name: "fk_book_id"
 end
