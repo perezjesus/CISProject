@@ -1,16 +1,6 @@
 <h1>Welcome Home!</h1>
 
-<h2>QUERY 0</h2>
-<%= form_tag(there_path, data: {turbo: false}) do%>
-    <%= label_tag(:ave_rating, "Enter rating") %>
-    <%= text_field_tag :ave_rating %><br>
-    <%= label_tag(:review_count, "Enter review count") %>
-    <%= text_field_tag :review_count %> <br><br>
-    <%= submit_tag("Submit")%>
-<% end %>
-<br><br>
-
-<h2>QUERY 1</h2>
+<h2>QUERY </h2>
 <%= form_tag(query1_path, data: {turbo: false}) do%>
     <%= label_tag(:genre1, "Enter genre 1") %>
     <%= text_field_tag :genre1 %> <br>
@@ -23,9 +13,45 @@
     <%= submit_tag("Submit") %>
 <% end %>
 
+<h2>QUERY 2</h2>
+<%= form_tag(query2_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
 
+<h2>QUERY 5</h2>
+<%= form_tag(query5_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
 
-
-
+<h2>QUERY 6</h2>
+<%= form_tag(query6_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %>  <br>
+    <%= label_tag(:ave_rating, "Greater than average rating: ") %>
+    <%= text_field_tag :ave_rating%> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
 
  
