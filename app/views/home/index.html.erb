@@ -1,3 +1,57 @@
 <h1>Welcome Home!</h1>
 
-<p><%= Author.find(123715).name %> </p>
+<h2>QUERY </h2>
+<%= form_tag(query1_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
+
+<h2>QUERY 2</h2>
+<%= form_tag(query2_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
+
+<h2>QUERY 5</h2>
+<%= form_tag(query5_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
+
+<h2>QUERY 6</h2>
+<%= form_tag(query6_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %>  <br>
+    <%= label_tag(:ave_rating, "Greater than average rating: ") %>
+    <%= text_field_tag :ave_rating%> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
+
+ 
