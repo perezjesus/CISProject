@@ -29,7 +29,7 @@ gem "jbuilder"
 
 gem "activerecord-oracle_enhanced-adapter"
 gem "ruby-oci8"
-
+gem "chartkick"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
