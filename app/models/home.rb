@@ -130,8 +130,35 @@ class Home
         return JSON.parse(real)
     end  
 
+    def self.query7(language_code, year_lower)
+        query = "SELECT publication_year, COUNT(*) 
+        FROM Books 
+        WHERE language_code = #{language_code} AND publication_year BETWEEN #{year_lower} AND 2015
+        GROUP BY publication_year 
+        ORDER BY publication_year ASC"
+        
+        result = ActiveRecord::Base.connection.exec_query(query)
+        chartData = "["
+        result.each do |row|
+            chartData << ('[' + row['publication_year'].to_s + ', ' + row['count(book_id)'].to_s + '], ')
+        end
+        real = chartData.chop.chop
+        real << ']' 
+        puts real
+        return JSON.parse(real)
+    end  
+
     def self.getTupleCount()
-        query = "SELECT COUNT(authors.author_id), COUNT(books.book_id), COUNT(writes.book_id), COUNT(genres.book_id) FROM authors, books, writes, genres"
+        query = "
+        SELECT SUM(cnt)
+        FROM (
+        SELECT COUNT(*) as cnt FROM authors
+        UNION ALL
+        SELECT COUNT(*) as cnt FROM books
+        UNION ALL
+        SELECT COUNT(*) as cnt FROM writes
+        UNION ALL
+        SELECT COUNT(*) as cnt FROM genres )"
         return result = ActiveRecord::Base.connection.exec_query(query)
     end
 
