@@ -45,10 +45,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_12_234157) do
     t.string "title_without_series"
   end
 
-  create_table "books_json", id: false, force: :cascade do |t|
-    t.text "json_data"
-  end
-
   create_table "genres", id: false, force: :cascade do |t|
     t.string "book_id"
     t.string "fiction", limit: 10
