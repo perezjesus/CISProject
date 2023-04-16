@@ -1,0 +1,5 @@
+<h1> GRAPH 2</h1>
+<%= 
+line_chart [{:name=> params[:genre1], :data=>Home.query2(params[:genre1], params[:year_lower], params[:year_upper])},
+{:name=> params[:genre2], :data=>Home.query2(params[:genre2], params[:year_lower], params[:year_upper])}]
+%> 
