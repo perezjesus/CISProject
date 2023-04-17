@@ -1,6 +1,19 @@
 <h1 class="centertext">Search for book trends!</h1>
 
-<h2>See change in ebook availability over time:</h2>
+<h2>QUERY 1</h2>
+<%= form_tag(query1_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
+
+<h2>QUERY 2</h2>
 <%= form_tag(query2_path, data: {turbo: false}) do%>
     <%= label_tag(:genre1, "Enter First Genre:") %>
     <%= text_field_tag :genre1 %> <br>
@@ -13,22 +26,9 @@
     <%= submit_tag("Submit") %>
 <% end %>
 
-<h2>See book trends only for prolific authors:</h2>
-<%= form_tag(query5_path, data: {turbo: false}) do%>
-    <%= label_tag(:genre1, "Enter First Genre:") %>
-    <%= text_field_tag :genre1 %> <br>
-    <%= label_tag(:genre2, "Enter Second Genre:") %>
-    <%= text_field_tag :genre2 %> <br>
-    <%= label_tag(:year_lower, "From: ") %>
-    <%= text_field_tag :year_lower %> <br>
-    <%= label_tag(:year_upper, "To: ") %>
-    <%= text_field_tag :year_upper %> <br><br>
-    <%= submit_tag("Submit") %>
-<% end %>
-
-<h2>See trends only for books above a certain rating:</h2>
-<%= form_tag(query6_path, data: {turbo: false}) do%>
-    <%= label_tag(:genre1, "Enter First Genre:") %>
+<h2>QUERY 3</h2>
+<%= form_tag(query3_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
     <%= text_field_tag :genre1 %> <br>
     <%= label_tag(:genre2, "Enter Second Genre:") %>
     <%= text_field_tag :genre2 %> <br>
@@ -41,3 +41,26 @@
     <%= submit_tag("Submit") %>
 <% end %>
 
+<h2>QUERY 4</h2>
+<%= form_tag(query4_path, data: {turbo: false}) do%>
+    <%= label_tag(:lang1, "Enter language 1") %>
+    <%= text_field_tag :lang1 %> <br>
+    <%= label_tag(:lang2, "Enter language 2") %>
+    <%= text_field_tag :lang2 %> <br>
+    <%= label_tag(:year_lower, "Starting from: ") %>
+    <%= text_field_tag :year_lower %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
+ 
+<h2>QUERY 5</h2>
+<%= form_tag(query5_path, data: {turbo: false}) do%>
+    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= text_field_tag :genre1 %> <br>
+    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= text_field_tag :genre2 %> <br>
+    <%= label_tag(:year_lower, "From: ") %>
+    <%= text_field_tag :year_lower %> <br>
+    <%= label_tag(:year_upper, "To: ") %>
+    <%= text_field_tag :year_upper %> <br><br>
+    <%= submit_tag("Submit") %>
+<% end %>
