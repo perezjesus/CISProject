@@ -1,10 +1,10 @@
-<h1>Search for book trends!</h1>
+<h1 class="centertext">Search for book trends!</h1>
 
-<h2>QUERY 2</h2>
+<h2>See change in ebook availability over time:</h2>
 <%= form_tag(query2_path, data: {turbo: false}) do%>
-    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= label_tag(:genre1, "Enter First Genre:") %>
     <%= text_field_tag :genre1 %> <br>
-    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= label_tag(:genre2, "Enter Second Genre:") %>
     <%= text_field_tag :genre2 %> <br>
     <%= label_tag(:year_lower, "From: ") %>
     <%= text_field_tag :year_lower %> <br>
@@ -13,11 +13,11 @@
     <%= submit_tag("Submit") %>
 <% end %>
 
-<h2>QUERY 5</h2>
+<h2>See book trends only for prolific authors:</h2>
 <%= form_tag(query5_path, data: {turbo: false}) do%>
-    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= label_tag(:genre1, "Enter First Genre:") %>
     <%= text_field_tag :genre1 %> <br>
-    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= label_tag(:genre2, "Enter Second Genre:") %>
     <%= text_field_tag :genre2 %> <br>
     <%= label_tag(:year_lower, "From: ") %>
     <%= text_field_tag :year_lower %> <br>
@@ -26,19 +26,18 @@
     <%= submit_tag("Submit") %>
 <% end %>
 
-<h2>QUERY 6</h2>
+<h2>See trends only for books above a certain rating:</h2>
 <%= form_tag(query6_path, data: {turbo: false}) do%>
-    <%= label_tag(:genre1, "Enter genre 1") %>
+    <%= label_tag(:genre1, "Enter First Genre:") %>
     <%= text_field_tag :genre1 %> <br>
-    <%= label_tag(:genre2, "Enter genre 2") %>
+    <%= label_tag(:genre2, "Enter Second Genre:") %>
     <%= text_field_tag :genre2 %> <br>
     <%= label_tag(:year_lower, "From: ") %>
     <%= text_field_tag :year_lower %> <br>
     <%= label_tag(:year_upper, "To: ") %>
     <%= text_field_tag :year_upper %>  <br>
-    <%= label_tag(:ave_rating, "Greater than average rating: ") %>
+    <%= label_tag(:ave_rating, "Greater than an average rating of: ") %>
     <%= text_field_tag :ave_rating%> <br><br>
     <%= submit_tag("Submit") %>
 <% end %>
 
- 
