@@ -17,7 +17,6 @@ class Home
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        puts chartData
         return JSON.parse(chartData)
        
     end
@@ -60,19 +59,21 @@ class Home
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        puts chartData
         return JSON.parse(chartData)
     end  
 
     def self.query4(language_code, year_lower)
         query = "SELECT publication_year, AVG(average_rating) 
-                FROM Books 
-                WHERE language_code = '#{language_code}' 
-                AND publication_year BETWEEN #{year_lower} AND 2017 
-                GROUP BY publication_year 
-                ORDER BY publication_year ASC"
+        FROM Books 
+        WHERE language_code = '#{language_code}' 
+        AND publication_year BETWEEN #{year_lower} AND 2017
+        AND books.format = (SELECT format FROM books WHERE average_rating = 
+            (SELECT MAX(average_rating) FROM books WHERE publication_year = #{year_lower}) FETCH FIRST 1 ROWS ONLY)
+        GROUP BY publication_year 
+        ORDER BY publication_year ASC"
         
         result = ActiveRecord::Base.connection.exec_query(query)
+        puts result
         temp = "["
         result.each do |row|
             temp << ('[' + row['publication_year'].to_s + ', ' + row['avg(average_rating)'].to_s + '], ')
@@ -101,7 +102,6 @@ class Home
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        puts chartData
         return JSON.parse(chartData)
     end  
 
