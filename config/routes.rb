@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'home/index'
   get 'home/there'
   get 'welcome/index'
@@ -13,8 +14,6 @@ Rails.application.routes.draw do
   post 'home/query4', to: "home#query4", as: 'query4'
   get 'home/query5'
   post 'home/query5', to: "home#query5", as: 'query5'
-  get 'home/query6'
-  post 'home/query6', to: "home#query6", as: 'query6'
 
   root 'welcome#index'
   
