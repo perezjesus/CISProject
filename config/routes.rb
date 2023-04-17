@@ -14,13 +14,9 @@ Rails.application.routes.draw do
   post 'home/query4', to: "home#query4", as: 'query4'
   get 'home/query5'
   post 'home/query5', to: "home#query5", as: 'query5'
-
+  post 'home/total', to: 'home#total', as: 'total'
+  get 'home/total'
   root 'welcome#index'
-  
-  resources :writes
-  resources :genres
-  resources :books
-  resources :authors
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")

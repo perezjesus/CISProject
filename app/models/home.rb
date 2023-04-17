@@ -116,7 +116,12 @@ class Home
         SELECT COUNT(*) as cnt FROM writes
         UNION ALL
         SELECT COUNT(*) as cnt FROM genres )"
-        return result = ActiveRecord::Base.connection.exec_query(query)
+        result = ActiveRecord::Base.connection.exec_query(query)
+        tupleCount = ""
+        result.each do |row|
+            tupleCount << row['sum(cnt)'].to_s
+        end
+        return tupleCount
     end
 
   end
