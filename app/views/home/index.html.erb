@@ -1,6 +1,8 @@
+<div class="bg-left"></div>
+<div class="bg-right"></div>
+
 <div style="font-family: Segoe UI;">
     <h1 class="centertext">Search for book trends!</h1>
-
 
     <div class="total">
         <%=link_to "Total Tuple Count", total_path, remote: true%>
@@ -55,7 +57,7 @@
     </div>
 
     <div class="form4">
-    <h2>Compare average rating of books by language:</h2>
+    <h2>Compare average rating of books that are in the format <br> of the most liked book in each year, by language:</h2>
     <%= form_tag(query4_path, data: {turbo: false}) do%>
         <%= label_tag(:lang1, "Enter First Language:") %>
         <%= text_field_tag :lang1 %> <br>

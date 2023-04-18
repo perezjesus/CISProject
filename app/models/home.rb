@@ -52,7 +52,10 @@ class Home
 
         query = "SELECT publication_year, COUNT(book_id) 
                 FROM Books NATURAL JOIN Writes NATURAL JOIN Genres 
-                WHERE author_id IN (SELECT author_id FROM Authors WHERE average_rating > #{average_rating}) 
+                WHERE author_id IN 
+                (SELECT author_id 
+                    FROM Authors 
+                    WHERE average_rating > #{average_rating}) 
                 AND #{genre} = 'true' AND publication_year BETWEEN #{year_lower} AND #{year_upper}  
                 GROUP BY publication_year 
                 ORDER BY publication_year ASC"
@@ -72,9 +75,14 @@ class Home
         query = "SELECT publication_year, AVG(average_rating) 
                 FROM Books 
                 WHERE language_code = '#{language_code}' 
-                AND publication_year BETWEEN #{year_lower} AND 2017
-                AND books.format = (SELECT format FROM books WHERE average_rating >= 
-                    (SELECT MAX(average_rating) FROM books WHERE publication_year = #{year_lower}) 
+                AND publication_year BETWEEN #{year_lower} AND 2015
+                AND books.format = 
+                (SELECT format FROM books 
+                    WHERE  publication_year = #{year_lower} 
+                    AND average_rating >= 
+                        (SELECT MAX(average_rating) 
+                        FROM books 
+                        WHERE publication_year = #{year_lower}) 
                     FETCH FIRST 1 ROWS ONLY)
                 GROUP BY publication_year 
                 ORDER BY publication_year ASC"
@@ -95,7 +103,7 @@ class Home
 
         query = "SELECT publication_year, COUNT(book_id) 
                 FROM Books NATURAL JOIN Genres 
-                WHERE #{genre} = 'true' AND average_rating > 
+                WHERE #{genre} = 'true' AND average_rating >= 
                     (SELECT MAX(average_rating) 
                     FROM Books NATURAL JOIN Genres 
                     WHERE #{genreCompare} = 'true' AND publication_year = #{year_lower})

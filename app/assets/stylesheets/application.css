@@ -13,6 +13,26 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .bg-left {
+  background-color: orange;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 90%;
+  left: 0;
+  z-index: -1;
+ }
+
+ .bg-right {
+  background-color: orange;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 90%;
+  right: 0;
+  z-index: -1;
+ }
 
  .center {
     display: block;
@@ -55,7 +75,7 @@
     display: inline-block;
     position: absolute;
     top: 40px;
-    left: 100px;
+    left: 370px;
     font: bold 11px Arial;
     background-color: #EEEEEE;
     color: #333333;
@@ -74,6 +94,7 @@
 }
 .form1 form {
   padding-left: 100px;
+  
 }
 
 .form1 input {
@@ -81,10 +102,10 @@
 }
 
 .form2 {
-  position: inline;
+  
 }
 .form2 form{
-  padding-left: 100px;
+  margin-left: 60%;
 }
 
 .form2 input {
@@ -92,7 +113,7 @@
 }
 
 .form3 {
-  margin-right: 50px;
+  margin-right: 30px;
   padding-left: 300px;
   float:left;
 }
@@ -105,12 +126,10 @@
 }
 
 .form4 {
-  position: inline;
-  left: 50px;
+  margin-left: 0px;
 }
 .form4 form{
-  position: inline;
-  left: 100px;
+  margin-left: 60%;
 }
 
 .form4 input {
