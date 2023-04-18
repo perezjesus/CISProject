@@ -1,6 +1,7 @@
 class Home
 
     def self.query1(genre, year_lower, year_upper)
+
         query = "SELECT publication_year, COUNT(book_id) 
                 FROM Books NATURAL JOIN Genres 
                 WHERE #{genre} = 'true' AND publication_year != 0
@@ -11,18 +12,20 @@ class Home
                 ORDER BY publication_year ASC"
         
         result = ActiveRecord::Base.connection.exec_query(query)
+
         temp = "["
         result.each do |row|
             temp << ('[' + row['publication_year'].to_s + ', ' + row['count(book_id)'].to_s + '], ')
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        puts chartData
+
         return JSON.parse(chartData)
        
     end
 
     def self.query2(genre, year_lower, year_upper)
+
         query = "SELECT publication_year, COUNT(book_id) 
                 FROM Books NATURAL JOIN Genres NATURAL JOIN Writes 
                 WHERE #{genre} = 'true'
@@ -46,6 +49,7 @@ class Home
     end   
 
     def self.query3(genre, year_lower, year_upper, average_rating)
+
         query = "SELECT publication_year, COUNT(book_id) 
                 FROM Books NATURAL JOIN Writes NATURAL JOIN Genres 
                 WHERE author_id IN (SELECT author_id FROM Authors WHERE average_rating > #{average_rating}) 
@@ -60,39 +64,44 @@ class Home
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        puts chartData
         return JSON.parse(chartData)
     end  
 
     def self.query4(language_code, year_lower)
+
         query = "SELECT publication_year, AVG(average_rating) 
                 FROM Books 
                 WHERE language_code = '#{language_code}' 
-                AND publication_year BETWEEN #{year_lower} AND 2017 
+                AND publication_year BETWEEN #{year_lower} AND 2017
+                AND books.format = (SELECT format FROM books WHERE average_rating >= 
+                    (SELECT MAX(average_rating) FROM books WHERE publication_year = #{year_lower}) 
+                    FETCH FIRST 1 ROWS ONLY)
                 GROUP BY publication_year 
                 ORDER BY publication_year ASC"
         
         result = ActiveRecord::Base.connection.exec_query(query)
+        puts result
         temp = "["
         result.each do |row|
             temp << ('[' + row['publication_year'].to_s + ', ' + row['avg(average_rating)'].to_s + '], ')
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        
+        puts chartData
         return JSON.parse(chartData)
     end
     
-    def self.query5(genre, year_lower, year_upper)
+    def self.query5(genre, genreCompare, year_lower, year_upper)
+
         query = "SELECT publication_year, COUNT(book_id) 
-        FROM Books NATURAL JOIN Genres 
-        WHERE #{genre} = 'true' AND average_rating > 
-            (SELECT MAX(average_rating) 
-            FROM Books NATURAL JOIN Genres 
-            WHERE mystery = 'true')
-        AND publication_year BETWEEN #{year_lower} AND #{year_upper}
-        GROUP BY publication_year 
-        ORDER BY publication_year ASC"
+                FROM Books NATURAL JOIN Genres 
+                WHERE #{genre} = 'true' AND average_rating > 
+                    (SELECT MAX(average_rating) 
+                    FROM Books NATURAL JOIN Genres 
+                    WHERE #{genreCompare} = 'true' AND publication_year = #{year_lower})
+                AND publication_year BETWEEN #{year_lower} AND #{year_upper}
+                GROUP BY publication_year 
+                ORDER BY publication_year ASC"
         
         result = ActiveRecord::Base.connection.exec_query(query)
         temp = "["
@@ -101,7 +110,6 @@ class Home
         end
         chartData = temp.chop.chop
         chartData << ']' 
-        puts chartData
         return JSON.parse(chartData)
     end  
 
@@ -116,7 +124,13 @@ class Home
         SELECT COUNT(*) as cnt FROM writes
         UNION ALL
         SELECT COUNT(*) as cnt FROM genres )"
-        return result = ActiveRecord::Base.connection.exec_query(query)
+
+        result = ActiveRecord::Base.connection.exec_query(query)
+        tupleCount = ""
+        result.each do |row|
+            tupleCount << row['sum(cnt)'].to_s
+        end
+        return tupleCount
     end
 
   end

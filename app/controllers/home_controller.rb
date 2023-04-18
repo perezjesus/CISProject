@@ -1,12 +1,9 @@
 class HomeController < ApplicationController
-    def index
-      
-    end
 
-    def there
-      
+    def index
+
     end
-    def query1
+    def total
 
     end
 end
